@@ -70,10 +70,10 @@ public class ChatClient {
     /** 메시지 송신 */
     public void send(String message) {
         // TODO: out 이 null 이 아니면 println(message)
-//    	if(out!=null) {
-//    		out.println(message);
-//    		out.flush();
-//    	}
+    	if(out!=null) {
+    		out.println(message);
+    		out.flush();
+    	}
     }
 
     /**
