@@ -54,17 +54,17 @@ public class ChatClient {
         // TODO 1) socket = new Socket(host, port);
     	socket = new Socket(host, port);
         // TODO 2) in / out 스트림 초기화 (UTF-8)
-//    	InputStream tmpIn = socket.getInputStream();
-//        InputStreamReader in_reader = new InputStreamReader(tmpIn);
-//        in = new BufferedReader(in_reader);
-//        out = new PrintWriter(socket.getOutputStream());
+    	InputStream tmpIn = socket.getInputStream();
+        InputStreamReader in_reader = new InputStreamReader(tmpIn);
+        in = new BufferedReader(in_reader);
+        out = new PrintWriter(socket.getOutputStream());
         // TODO 3) out 으로 첫 줄에 닉네임 송신
-//        out.println(nickname);
+        out.println(nickname);
         // TODO 4) running = true; → new Thread(this::readLoop).setDaemon(true) → start()
-//        running = true; 
-//        readerThread = new Thread(this::readLoop);
-//        readerThread.setDaemon(true);
-//        readerThread.start();
+        running = true; 
+        readerThread = new Thread(this::readLoop);
+        readerThread.setDaemon(true);
+        readerThread.start();
     }
 
     /** 메시지 송신 */
