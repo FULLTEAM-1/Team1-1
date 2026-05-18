@@ -41,43 +41,43 @@ public class ChatHandler implements Runnable {
         // TODO: in / out 스트림 초기화 (UTF-8 명시!)
         //   - in : BufferedReader + InputStreamReader(socket.getInputStream(), "UTF-8")
         //   - out: PrintWriter   + OutputStreamWriter(socket.getOutputStream(), "UTF-8"), autoFlush=true
-        in = new BufferedReader(
-        		new InputStreamReader(
-        				socket.getInputStream(),
-        				"UTF-8"
-        				)
-        		);
-        out = new PrintWriter(
-        		new OutputStreamWriter(
-        				socket.getOutputStream(),
-        				"UTF-8"
-        				),
-        		true
-        		);
-        		
-    }
+//        in = new BufferedReader(
+//        		new InputStreamReader(
+//        				socket.getInputStream(),
+//        				"UTF-8"
+//        				)
+//        		);
+//        out = new PrintWriter(
+//        		new OutputStreamWriter(
+//        				socket.getOutputStream(),
+//        				"UTF-8"
+//        				),
+//        		true
+//        		);
+//        		
+//    }
 
-//    @Override
-//    public void run() {
-//        try {String name = in.readLine();
-//        if(name != null && !name.isBlank()) {
-//        	nickname = name;
-//        }
-//        ChatServer.broadcast("[입장]" + nickname);
-//        
-//        String line;
-//        
-//        while((line = in.readLine()) !=null) {
-//        	ChatServer.broadcast(
-//        			nickname +" : " + line);
-//        }
-// }
-//        catch(IOException e) {
-//        	System.err.println(
-//        			"[ChatHandler]"
-//        			+ nickname
-//        			+ "접속 종료 : " 
-//        			+e.getMessage());
+    @Override
+    public void run() {
+        try {String name = in.readLine();
+        if(name != null && !name.isBlank()) {
+        	nickname = name;
+        }
+        ChatServer.broadcast("[입장]" + nickname);
+        
+        String line;
+        
+        while((line = in.readLine()) !=null) {
+        	ChatServer.broadcast(
+        			nickname +" : " + line);
+        }
+ }
+        catch(IOException e) {
+        	System.err.println(
+        			"[ChatHandler]"
+        			+ nickname
+        			+ "접속 종료 : " 
+        			+e.getMessage());
         
         	
             // ====== 학생 구현 시작 ======================================
