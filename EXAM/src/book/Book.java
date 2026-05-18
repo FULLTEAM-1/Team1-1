@@ -64,53 +64,53 @@ public class Book {
 
     // ====== getter / setter — 학생 TODO: 본문 채우기 (시그니처는 변경 금지) ======
 
-//	public String getBookCode() {
-//		return BookCode;
-//	}
-//
-//	public void setBookCode(String bookCode) {
-//		BookCode = bookCode;
-//	}
-//
-//	public int getClassificationId() {
-//		return ClassificationId;
-//	}
-//
-//	public void setClassificationId(int classificationId) {
-//		ClassificationId = classificationId;
-//	}
-//
-//	public String getAuthor() {
-//		return author;
-//	}
-//
-//	public void setAuthor(String author) {
-//		this.author = author;
-//	}
-//
-//	public String getName() {
-//		return name;
-//	}
-//
-//	public void setName(String name) {
-//		this.name = name;
-//	}
-//
-//	public String getPublisher() {
-//		return publisher;
-//	}
-//
-//	public void setPublisher(String publisher) {
-//		this.publisher = publisher;
-//	}
-//
-//	public String getIsReserve() {
-//		return isReserve;
-//	}
-//
-//	public void setIsReserve(String isReserve) {
-//		this.isReserve = isReserve;
-//	}
+	public String getBookCode() {
+		return BookCode;
+	}
+
+	public void setBookCode(String bookCode) {
+		BookCode = bookCode;
+	}
+
+	public int getClassificationId() {
+		return ClassificationId;
+	}
+
+	public void setClassificationId(int classificationId) {
+		ClassificationId = classificationId;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
+	public String getIsReserve() {
+		return isReserve;
+	}
+
+	public void setIsReserve(String isReserve) {
+		this.isReserve = isReserve;
+	}
 	
     /** 학생 TODO: 모든 필드 표시 (디버깅 용) */
 //	@Override
