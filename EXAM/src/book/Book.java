@@ -59,7 +59,7 @@ public class Book {
     	this.author = author;
     	this.name = name;
     	this.publisher = publisher;
-    	this.isReserve = isReserve;
+    	this.isReserve = isReserve; 
     }
 
     // ====== getter / setter — 학생 TODO: 본문 채우기 (시그니처는 변경 금지) ======
