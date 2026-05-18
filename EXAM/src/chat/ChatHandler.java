@@ -87,42 +87,42 @@ public class ChatHandler implements Runnable {
             // 학생이 위 TODO 를 모두 구현하면 아래 한 줄 삭제
           
             // ====== 학생 구현 끝 ========================================
-        	} finally {
-            // TODO 3) ChatServer.remove(this) 로 컬렉션에서 제거
-        		ChatServer.remove(this);
-            // TODO 4) in / out / socket 자원 해제 (각각 null 체크 + try-catch)
-        		try {
-        			if(in != null)
-        				in.close();
-        		}catch(IOException e) {
-        		}
-        		try {
-        			if(out!=null)
-        				out.close();
-        		}catch(Exception e) {
-        		}
-        		try {
-        			if(socket!=null)
-        				socket.close();
-        		}catch (IOException e) {
-        		}
-            // TODO 5) 퇴장 broadcast
-        		ChatServer.broadcast("[퇴장]" + nickname);
-        }
-    }
+//        	} finally {
+//            // TODO 3) ChatServer.remove(this) 로 컬렉션에서 제거
+//        		ChatServer.remove(this);
+//            // TODO 4) in / out / socket 자원 해제 (각각 null 체크 + try-catch)
+//        		try {
+//        			if(in != null)
+//        				in.close();
+//        		}catch(IOException e) {
+//        		}
+//        		try {
+//        			if(out!=null)
+//        				out.close();
+//        		}catch(Exception e) {
+//        		}
+//        		try {
+//        			if(socket!=null)
+//        				socket.close();
+//        		}catch (IOException e) {
+//        		}
+//            // TODO 5) 퇴장 broadcast
+//        		ChatServer.broadcast("[퇴장]" + nickname);
+//        }
+//    }
 
     /**
      * 이 핸들러가 담당하는 클라이언트에게 한 줄 전송.
      *
      * <p>학생 TODO: out 이 null 이 아니면 println(message) 호출.</p>
      */
-//    public void send(String message) {
-//        // TODO: out 으로 한 줄 송신
-//    	if(out!=null)
-//    		out.println(message);
-//    }
-//
-//    public String getNickname() {
-//        return nickname;
-//    }
-//}
+    public void send(String message) {
+        // TODO: out 으로 한 줄 송신
+    	if(out!=null)
+    		out.println(message);
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+}
