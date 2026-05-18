@@ -2,6 +2,7 @@ package chat;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -50,11 +51,16 @@ public class ChatServer {
             server = new ServerSocket(PORT);
             System.out.println("[ChatServer] 서버 시작 = PORT: " + PORT);
             
-            // TODO 2) 무한 루프 안에서 accept() 로 Socket 받기
-            // TODO 3) 받은 Socket 으로 ChatHandler 생성 → clients 에 add → 새 Thread 로 start
+            while (true) {
+                // TODO 2) 무한 루프 안에서 accept() 로 Socket 받기
+                Socket client = server.accept();
+                
+                // TODO 3) 받은 Socket 으로 ChatHandler 생성 → clients 에 add → 새 Thread 로 start
+                ChatHandler handler = new ChatHandler(client);
+                clients.add(handler);
+                new Thread(handler).start();
+            }
 
-            // 학생이 위 TODO 를 모두 구현하면 아래 한 줄 삭제
-            throw new IOException("ChatServer.main() 가 아직 구현되지 않았습니다. (TODO)");
             // ====== 학생 구현 끝 ========================================
         } catch (IOException e) {
             System.err.println("[ChatServer] 오류: " + e.getMessage());
