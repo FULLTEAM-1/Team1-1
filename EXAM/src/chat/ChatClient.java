@@ -104,10 +104,10 @@ public class ChatClient {
         // TODO: socket → in → out 순서로 close (각각 null 체크 + try-catch 로 IOException 무시)
         //       ★ socket 을 먼저 닫아야 reader 스레드의 blocking read 가 깨어나 BufferedReader lock 이 풀림
         //       (Java 21 부터 BufferedReader 는 ReentrantLock 으로 보호 → 순서 잘못되면 EDT deadlock)
-//        try{if(socket!=null && !socket.isClosed()) socket.close();} catch (IOException e) {e.printStackTrace();}
-//        try{if(in!=null)in.close();}catch(IOException e) {e.printStackTrace();}
-//        if(out!=null)out.close();
-//    }
+        try{if(socket!=null && !socket.isClosed()) socket.close();} catch (IOException e) {e.printStackTrace();}
+        try{if(in!=null)in.close();}catch(IOException e) {e.printStackTrace();}
+        if(out!=null)out.close();
+    }
 
     public boolean isConnected() {
         return socket != null && !socket.isClosed();
