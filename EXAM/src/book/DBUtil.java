@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -77,9 +78,7 @@ public class DBUtil {
         
         // TODO 3) return DriverManager.getConnection(url, user, password); — JDBC 4단계 ②
 
-        throw new UnsupportedOperationException(
-                "DBUtil.getConnection() — 아직 구현되지 않았습니다.\n" +
-                "  → src/book/DBUtil.java 의 TODO 를 채우세요.");
+        return DriverManager.getConnection(url, user, password);
     }
 
     /**
