@@ -70,20 +70,20 @@ public class BookDAO {
      * <p>학생 TODO: try-with-resources 로 Connection / PreparedStatement 획득 →
      *    setString / setObject 로 6개 파라미터 바인딩 → executeUpdate() 반환.</p>
      */
-//    public int insert(Book book) throws SQLException {
-//        // TODO: PreparedStatement 로 SQL_INSERT 실행
-//        try(Connection conn = DBUtil.getConnection();
-//        		PreparedStatement pstmt = conn.prepareStatement(SQL_INSERT)) {
-//        	pstmt.setString(1, book.getBookCode());
-//        	pstmt.setObject(2, book.getClassificationId());
-//        	pstmt.setString(3, book.getAuthor());
-//        	pstmt.setString(4, book.getName());
-//        	pstmt.setString(5, book.getPublisher());
-//        	pstmt.setString(6, book.getIsReserve());
-//        	
-//        	return pstmt.executeUpdate();
-//        }
-//    }
+    public int insert(Book book) throws SQLException {
+        // TODO: PreparedStatement 로 SQL_INSERT 실행
+        try(Connection conn = DBUtil.getConnection();
+        		PreparedStatement pstmt = conn.prepareStatement(SQL_INSERT)) {
+        	pstmt.setString(1, book.getBookCode());
+        	pstmt.setObject(2, book.getClassificationId());
+        	pstmt.setString(3, book.getAuthor());
+        	pstmt.setString(4, book.getName());
+        	pstmt.setString(5, book.getPublisher());
+        	pstmt.setString(6, book.getIsReserve());
+        	
+        	return pstmt.executeUpdate();
+        }
+    }
 
     /**
      * 전체 도서 조회.
@@ -94,55 +94,55 @@ public class BookDAO {
      * <p>주의: <code>Classification_Id</code> 는 null 가능 컬럼.
      *    <code>rs.getInt(...)</code> 후 <code>rs.wasNull()</code> 로 null 체크 필요.</p>
      */
-//    public List<Book> selectAll() throws SQLException {
-//        // TODO: PreparedStatement 로 SQL_SELECT_ALL 실행 → ResultSet 순회 → Book List 반환
-//        List<Book> list = new ArrayList<>();
-//        try(Connection conn = DBUtil.getConnection();
-//        		PreparedStatement pstmt = conn.prepareStatement(SQL_SELECT_ALL);
-//        		ResultSet rs = pstmt.executeQuery()) {
-//        	while(rs.next()) {
-//        		String bookCode = rs.getString("Book_code");
-//        		Integer classificationId = rs.getInt("classification_Id");
-//        		if(rs.wasNull()) {
-//        			classificationId = null;
-//        		}
-//        		String author = rs.getString("author");
-//        		String name = rs.getString("name");
-//        		String publisher = rs.getString("publisher");
-//        		String isreserve = rs.getString("isreserve");
-//        		
-//        		Book book = new Book(
-//        				bookCode,
-//        				classificationId,
-//        				author,
-//        				name,
-//        				publisher,
-//        				isreserve
-//        				);
-//        		list.add(book);
-//        	}
-//        }
-//		return list;
-//    }
+    public List<Book> selectAll() throws SQLException {
+        // TODO: PreparedStatement 로 SQL_SELECT_ALL 실행 → ResultSet 순회 → Book List 반환
+        List<Book> list = new ArrayList<>();
+        try(Connection conn = DBUtil.getConnection();
+        		PreparedStatement pstmt = conn.prepareStatement(SQL_SELECT_ALL);
+        		ResultSet rs = pstmt.executeQuery()) {
+        	while(rs.next()) {
+        		String bookCode = rs.getString("Book_code");
+        		Integer classificationId = rs.getInt("classification_Id");
+        		if(rs.wasNull()) {
+        			classificationId = null;
+        		}
+        		String author = rs.getString("author");
+        		String name = rs.getString("name");
+        		String publisher = rs.getString("publisher");
+        		String isreserve = rs.getString("isreserve");
+        		
+        		Book book = new Book(
+        				bookCode,
+        				classificationId,
+        				author,
+        				name,
+        				publisher,
+        				isreserve
+        				);
+        		list.add(book);
+        	}
+        }
+		return list;
+    }
 
     /**
      * 도서 1건 수정 (Book_code 기준).
      *
      * <p>학생 TODO: SQL_UPDATE 실행. 마지막 파라미터(?)는 WHERE 의 Book_code.</p>
      */
-//    public int update(Book book) throws SQLException {
-//        // TODO: PreparedStatement 로 SQL_UPDATE 실행
-//    	try(Connection conn = DBUtil.getConnection();
-//        		PreparedStatement pstmt = conn.prepareStatement(SQL_UPDATE)) {
-//    		pstmt.setObject(1, book.getClassificationId());
-//    		pstmt.setString(2, book.getAuthor());
-//    		pstmt.setString(3, book.getName());
-//    		pstmt.setString(4, book.getPublisher());
-//    		pstmt.setString(5, book.getIsReserve());
-//    		pstmt.setString(6, book.getBookCode());
-//    		return pstmt.executeUpdate();
-//    	}
-//    }
+    public int update(Book book) throws SQLException {
+        // TODO: PreparedStatement 로 SQL_UPDATE 실행
+    	try(Connection conn = DBUtil.getConnection();
+        		PreparedStatement pstmt = conn.prepareStatement(SQL_UPDATE)) {
+    		pstmt.setObject(1, book.getClassificationId());
+    		pstmt.setString(2, book.getAuthor());
+    		pstmt.setString(3, book.getName());
+    		pstmt.setString(4, book.getPublisher());
+    		pstmt.setString(5, book.getIsReserve());
+    		pstmt.setString(6, book.getBookCode());
+    		return pstmt.executeUpdate();
+    	}
+    }
 
     /**
      * 도서 1건 삭제.

@@ -41,43 +41,43 @@ public class ChatHandler implements Runnable {
         // TODO: in / out 스트림 초기화 (UTF-8 명시!)
         //   - in : BufferedReader + InputStreamReader(socket.getInputStream(), "UTF-8")
         //   - out: PrintWriter   + OutputStreamWriter(socket.getOutputStream(), "UTF-8"), autoFlush=true
-//        in = new BufferedReader(
-//        		new InputStreamReader(
-//        				socket.getInputStream(),
-//        				"UTF-8"
-//        				)
-//        		);
-//        out = new PrintWriter(
-//        		new OutputStreamWriter(
-//        				socket.getOutputStream(),
-//        				"UTF-8"
-//        				),
-//        		true
-//        		);
-//        		
-//    }
+        in = new BufferedReader(
+        		new InputStreamReader(
+        				socket.getInputStream(),
+        				"UTF-8"
+        				)
+        		);
+        out = new PrintWriter(
+        		new OutputStreamWriter(
+        				socket.getOutputStream(),
+        				"UTF-8"
+        				),
+        		true
+        		);
+        		
+    }
 
-//    @Override
-//    public void run() {
-//        try {String name = in.readLine();
-//        if(name != null && !name.isBlank()) {
-//        	nickname = name;
-//        }
-//        ChatServer.broadcast("[입장]" + nickname);
-//        
-//        String line;
-//        
-//        while((line = in.readLine()) !=null) {
-//        	ChatServer.broadcast(
-//        			nickname +" : " + line);
-//        }
-// }
-//        catch(IOException e) {
-//        	System.err.println(
-//        			"[ChatHandler]"
-//        			+ nickname
-//        			+ "접속 종료 : " 
-//        			+e.getMessage());
+    @Override
+    public void run() {
+        try {String name = in.readLine();
+        if(name != null && !name.isBlank()) {
+        	nickname = name;
+        }
+        ChatServer.broadcast("[입장]" + nickname);
+        
+        String line;
+        
+        while((line = in.readLine()) !=null) {
+        	ChatServer.broadcast(
+        			nickname +" : " + line);
+        }
+ }
+        catch(IOException e) {
+        	System.err.println(
+        			"[ChatHandler]"
+        			+ nickname
+        			+ "접속 종료 : " 
+        			+e.getMessage());
         
         	
             // ====== 학생 구현 시작 ======================================
@@ -87,29 +87,29 @@ public class ChatHandler implements Runnable {
             // 학생이 위 TODO 를 모두 구현하면 아래 한 줄 삭제
           
             // ====== 학생 구현 끝 ========================================
-//        	} finally {
-//            // TODO 3) ChatServer.remove(this) 로 컬렉션에서 제거
-//        		ChatServer.remove(this);
-//            // TODO 4) in / out / socket 자원 해제 (각각 null 체크 + try-catch)
-//        		try {
-//        			if(in != null)
-//        				in.close();
-//        		}catch(IOException e) {
-//        		}
-//        		try {
-//        			if(out!=null)
-//        				out.close();
-//        		}catch(Exception e) {
-//        		}
-//        		try {
-//        			if(socket!=null)
-//        				socket.close();
-//        		}catch (IOException e) {
-//        		}
-//            // TODO 5) 퇴장 broadcast
-//        		ChatServer.broadcast("[퇴장]" + nickname);
-//        }
-//    }
+        	} finally {
+            // TODO 3) ChatServer.remove(this) 로 컬렉션에서 제거
+        		ChatServer.remove(this);
+            // TODO 4) in / out / socket 자원 해제 (각각 null 체크 + try-catch)
+        		try {
+        			if(in != null)
+        				in.close();
+        		}catch(IOException e) {
+        		}
+        		try {
+        			if(out!=null)
+        				out.close();
+        		}catch(Exception e) {
+        		}
+        		try {
+        			if(socket!=null)
+        				socket.close();
+        		}catch (IOException e) {
+        		}
+            // TODO 5) 퇴장 broadcast
+        		ChatServer.broadcast("[퇴장]" + nickname);
+        }
+    }
 
     /**
      * 이 핸들러가 담당하는 클라이언트에게 한 줄 전송.
