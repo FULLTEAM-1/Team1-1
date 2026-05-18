@@ -130,32 +130,32 @@ public class BookDAO {
      *
      * <p>학생 TODO: SQL_UPDATE 실행. 마지막 파라미터(?)는 WHERE 의 Book_code.</p>
      */
-    public int update(Book book) throws SQLException {
-        // TODO: PreparedStatement 로 SQL_UPDATE 실행
-    	try(Connection conn = DBUtil.getConnection();
-        		PreparedStatement pstmt = conn.prepareStatement(SQL_UPDATE)) {
-    		pstmt.setObject(1, book.getClassificationId());
-    		pstmt.setString(2, book.getAuthor());
-    		pstmt.setString(3, book.getName());
-    		pstmt.setString(4, book.getPublisher());
-    		pstmt.setString(5, book.getIsReserve());
-    		pstmt.setString(6, book.getBookCode());
-    		return pstmt.executeUpdate();
-    	}
-    }
+//    public int update(Book book) throws SQLException {
+//        // TODO: PreparedStatement 로 SQL_UPDATE 실행
+//    	try(Connection conn = DBUtil.getConnection();
+//        		PreparedStatement pstmt = conn.prepareStatement(SQL_UPDATE)) {
+//    		pstmt.setObject(1, book.getClassificationId());
+//    		pstmt.setString(2, book.getAuthor());
+//    		pstmt.setString(3, book.getName());
+//    		pstmt.setString(4, book.getPublisher());
+//    		pstmt.setString(5, book.getIsReserve());
+//    		pstmt.setString(6, book.getBookCode());
+//    		return pstmt.executeUpdate();
+//    	}
+//    }
 
     /**
      * 도서 1건 삭제.
      *
      * <p>학생 TODO: SQL_DELETE 실행. ?에 bookCode 바인딩.</p>
      */
-//    public int delete(String bookCode) throws SQLException {
-//        // TODO: PreparedStatement 로 SQL_DELETE 실행
-//    	try(Connection conn = DBUtil.getConnection();
-//        		PreparedStatement pstmt = conn.prepareStatement(SQL_DELETE)) {
-//    		pstmt.setString(1, bookCode);
-//    		return pstmt.executeUpdate();
-//    	}
-//		
-//    }
-//}
+    public int delete(String bookCode) throws SQLException {
+        // TODO: PreparedStatement 로 SQL_DELETE 실행
+    	try(Connection conn = DBUtil.getConnection();
+        		PreparedStatement pstmt = conn.prepareStatement(SQL_DELETE)) {
+    		pstmt.setString(1, bookCode);
+    		return pstmt.executeUpdate();
+    	}
+		
+    }
+}
