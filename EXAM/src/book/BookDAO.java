@@ -11,7 +11,7 @@ import java.util.List;
  * Book_tbl DAO (☆ 학생 구현)
  *
  * <pre>
- * 담당자(@assignee): ___________________
+ * 담당자(@assignee): 김선길
  * 작업단위(@task)  : TASK-D
  * 가이드 카드      : docs/tasks/TASK-D_조원_BookDAO.md
  * 선행 조건        : TASK-C (Book + DBUtil) 완료 후 시작

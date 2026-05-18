@@ -4,7 +4,7 @@ package book;
  * Book_tbl 의 한 행을 나타내는 VO (☆ 학생 구현)
  *
  * <pre>
- * 담당자(@assignee): ___________________
+ * 담당자(@assignee): 박형규
  * 작업단위(@task)  : TASK-C
  * 가이드 카드      : docs/tasks/TASK-C_조원_Book_DBUtil.md
  *

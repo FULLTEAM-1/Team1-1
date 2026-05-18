@@ -12,7 +12,7 @@ import java.util.function.Consumer;
  * 채팅 클라이언트 (☆ 학생 구현)
  *
  * <pre>
- * 담당자(@assignee): ___________________
+ * 담당자(@assignee): 박형규
  * 작업단위(@task)  : TASK-B
  * 가이드 카드      : docs/tasks/TASK-B_조원_ChatClient.md
  *
