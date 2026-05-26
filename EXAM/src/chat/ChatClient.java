@@ -2,6 +2,8 @@ package chat;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.function.Consumer;
@@ -10,7 +12,7 @@ import java.util.function.Consumer;
  * 채팅 클라이언트 (☆ 학생 구현)
  *
  * <pre>
- * 담당자(@assignee): ___________________
+ * 담당자(@assignee): 박형규
  * 작업단위(@task)  : TASK-B
  * 가이드 카드      : docs/tasks/TASK-B_조원_ChatClient.md
  *
@@ -50,16 +52,28 @@ public class ChatClient {
     /** 서버 접속 */
     public void connect(String host, int port, String nickname) throws IOException {
         // TODO 1) socket = new Socket(host, port);
+    	socket = new Socket(host, port);
         // TODO 2) in / out 스트림 초기화 (UTF-8)
+    	InputStream tmpIn = socket.getInputStream();
+        InputStreamReader in_reader = new InputStreamReader(tmpIn);
+        in = new BufferedReader(in_reader);
+        out = new PrintWriter(socket.getOutputStream());
         // TODO 3) out 으로 첫 줄에 닉네임 송신
+        out.println(nickname);
         // TODO 4) running = true; → new Thread(this::readLoop).setDaemon(true) → start()
-
-        throw new IOException("ChatClient.connect() 가 아직 구현되지 않았습니다. (TODO)");
+        running = true; 
+        readerThread = new Thread(this::readLoop);
+        readerThread.setDaemon(true);
+        readerThread.start();
     }
 
     /** 메시지 송신 */
     public void send(String message) {
         // TODO: out 이 null 이 아니면 println(message)
+    	if(out!=null) {
+    		out.println(message);
+    		out.flush();
+    	}
     }
 
     /**
@@ -90,6 +104,9 @@ public class ChatClient {
         // TODO: socket → in → out 순서로 close (각각 null 체크 + try-catch 로 IOException 무시)
         //       ★ socket 을 먼저 닫아야 reader 스레드의 blocking read 가 깨어나 BufferedReader lock 이 풀림
         //       (Java 21 부터 BufferedReader 는 ReentrantLock 으로 보호 → 순서 잘못되면 EDT deadlock)
+        try{if(socket!=null && !socket.isClosed()) socket.close();} catch (IOException e) {e.printStackTrace();}
+        try{if(in!=null)in.close();}catch(IOException e) {e.printStackTrace();}
+        if(out!=null)out.close();
     }
 
     public boolean isConnected() {

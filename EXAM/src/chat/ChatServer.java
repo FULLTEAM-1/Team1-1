@@ -11,7 +11,7 @@ import java.util.Set;
  * 채팅 서버 (☆ 학생 구현)
  *
  * <pre>
- * 담당자(@assignee): ___________________
+ * 담당자(@assignee): 박한결
  * 작업단위(@task)  : TASK-A
  * 가이드 카드      : docs/tasks/TASK-A_조원_ChatServer_Handler.md
  *
@@ -48,11 +48,19 @@ public class ChatServer {
         try {
             // ====== 학생 구현 시작 ======================================
             // TODO 1) ServerSocket(PORT) 생성 + 시작 로그 출력
-            // TODO 2) 무한 루프 안에서 accept() 로 Socket 받기
-            // TODO 3) 받은 Socket 으로 ChatHandler 생성 → clients 에 add → 새 Thread 로 start
+            server = new ServerSocket(PORT);
+            System.out.println("[ChatServer] 서버 시작 = PORT: " + PORT);
+            
+            while (true) {
+                // TODO 2) 무한 루프 안에서 accept() 로 Socket 받기
+                Socket client = server.accept();
+                
+                // TODO 3) 받은 Socket 으로 ChatHandler 생성 → clients 에 add → 새 Thread 로 start
+                ChatHandler handler = new ChatHandler(client);
+                clients.add(handler);
+                new Thread(handler).start();
+            }
 
-            // 학생이 위 TODO 를 모두 구현하면 아래 한 줄 삭제
-            throw new IOException("ChatServer.main() 가 아직 구현되지 않았습니다. (TODO)");
             // ====== 학생 구현 끝 ========================================
         } catch (IOException e) {
             System.err.println("[ChatServer] 오류: " + e.getMessage());
@@ -74,7 +82,12 @@ public class ChatServer {
      */
     public static void broadcast(String message) {
         // TODO: 동기화 블록 안에서 clients 순회 → 각 handler.send(message) 호출
-        System.out.println("[broadcast TODO] " + message);
+        
+        synchronized (clients) {
+            for (ChatHandler h : clients) {
+                h.send(message);
+            }
+        }
     }
 
     /** 클라이언트 접속 종료 시 컬렉션에서 제거 */

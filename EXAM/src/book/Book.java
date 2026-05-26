@@ -4,7 +4,7 @@ package book;
  * Book_tbl 의 한 행을 나타내는 VO (☆ 학생 구현)
  *
  * <pre>
- * 담당자(@assignee): ___________________
+ * 담당자(@assignee): 박형규
  * 작업단위(@task)  : TASK-C
  * 가이드 카드      : docs/tasks/TASK-C_조원_Book_DBUtil.md
  *
@@ -38,7 +38,13 @@ package book;
 public class Book {
 
     // TODO: private 필드 6개 선언
-
+	private String BookCode;
+	private int ClassificationId;
+	private String author;
+	private String name;
+	private String publisher;
+	private String isReserve;
+	
     /** 기본 생성자 — 그대로 사용 */
     public Book() {}
 
@@ -48,31 +54,72 @@ public class Book {
     public Book(String bookCode, Integer classificationId,
                 String author, String name, String publisher, String isReserve) {
         // TODO: 6개 필드 초기화 (this.xxx = xxx)
+    	this.BookCode = bookCode;
+    	this.ClassificationId = classificationId;
+    	this.author = author;
+    	this.name = name;
+    	this.publisher = publisher;
+    	this.isReserve = isReserve; 
     }
 
     // ====== getter / setter — 학생 TODO: 본문 채우기 (시그니처는 변경 금지) ======
 
-    public String  getBookCode()                  { return null; /* TODO */ }
-    public void    setBookCode(String v)          { /* TODO */ }
+	public String getBookCode() {
+		return BookCode;
+	}
 
-    public Integer getClassificationId()          { return null; /* TODO */ }
-    public void    setClassificationId(Integer v) { /* TODO */ }
+	public void setBookCode(String bookCode) {
+		BookCode = bookCode;
+	}
 
-    public String  getAuthor()                    { return null; /* TODO */ }
-    public void    setAuthor(String v)            { /* TODO */ }
+	public int getClassificationId() {
+		return ClassificationId;
+	}
 
-    public String  getName()                      { return null; /* TODO */ }
-    public void    setName(String v)              { /* TODO */ }
+	public void setClassificationId(int classificationId) {
+		ClassificationId = classificationId;
+	}
 
-    public String  getPublisher()                 { return null; /* TODO */ }
-    public void    setPublisher(String v)         { /* TODO */ }
+	public String getAuthor() {
+		return author;
+	}
 
-    public String  getIsReserve()                 { return null; /* TODO */ }
-    public void    setIsReserve(String v)         { /* TODO */ }
+	public void setAuthor(String author) {
+		this.author = author;
+	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
+	public String getIsReserve() {
+		return isReserve;
+	}
+
+	public void setIsReserve(String isReserve) {
+		this.isReserve = isReserve;
+	}
+	
     /** 학생 TODO: 모든 필드 표시 (디버깅 용) */
-    @Override
-    public String toString() {
-        return "Book{TODO: 모든 필드 표시}";
-    }
+	@Override
+	public String toString() {
+		return "Book[TODO=" + BookCode + ", Classification_Id=" + ClassificationId + ", author=" + author
+				+ ", name=" + name + ", publisher=" + publisher + ", isReserve=" + isReserve + "]";
+	}
+
+
+
+
 }
